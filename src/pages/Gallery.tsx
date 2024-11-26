@@ -1,0 +1,97 @@
+import React, { useState } from 'react';
+import PhotoAlbum from 'react-photo-album';
+import ImageCard from '../components/ImageCard';
+
+// This is sample data - replace with actual images from your collection
+const photos = [
+  {
+    src: "https://images.unsplash.com/photo-1609607847926-da4702f01fef",
+    width: 1600,
+    height: 900,
+    alt: "Temple ceremony",
+    date: "2023-12-15",
+    description: "பிரதோஷ சிவநாயன்மார் அருளாசி வழங்குகிறார்"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1604873902969-999bffa6c762",
+    width: 1600,
+    height: 1067,
+    alt: "Temple visit",
+    date: "2023-11-30",
+    description: "காஞ்சி காமகோடி பீடம்"
+  },
+  {
+    src: "https://images.unsplash.com/photo-1623656607289-720b258149ca",
+    width: 1600,
+    height: 1067,
+    alt: "Prayer ceremony",
+    date: "2023-10-20",
+    description: "பூஜை நிகழ்ச்சி"
+  }
+];
+
+function Gallery() {
+  const [selectedYear, setSelectedYear] = useState<string>('all');
+  const years = ['all', '2023', '2022', '2021'];
+
+  const filteredPhotos = selectedYear === 'all' 
+    ? photos 
+    : photos.filter(photo => photo.date?.startsWith(selectedYear));
+
+  return (
+    <div className="space-y-8">
+      <div className="flex flex-col items-center space-y-4">
+        <h1 className="text-3xl font-bold font-tamil text-orange-700">
+          புகைப்பட தொகுப்பு
+        </h1>
+        
+        {/* Year Filter */}
+        <div className="flex space-x-4">
+          {years.map(year => (
+            <button
+              key={year}
+              onClick={() => setSelectedYear(year)}
+              className={`px-4 py-2 rounded-full transition-colors ${
+                selectedYear === year
+                  ? 'bg-orange-600 text-white'
+                  : 'bg-orange-100 text-orange-800 hover:bg-orange-200'
+              }`}
+            >
+              {year === 'all' ? 'அனைத்தும்' : year}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Photo Gallery */}
+      <div className="rounded-xl overflow-hidden">
+        <PhotoAlbum
+          layout="masonry"
+          photos={filteredPhotos.map(photo => ({
+            src: photo.src,
+            width: photo.width,
+            height: photo.height,
+            alt: photo.alt,
+          }))}
+          renderPhoto={({ photo, wrapperStyle, imageProps }) => (
+            <div style={wrapperStyle}>
+              <ImageCard
+                src={imageProps.src}
+                alt={imageProps.alt || ''}
+                date={photos.find(p => p.src === photo.src)?.date}
+                description={photos.find(p => p.src === photo.src)?.description}
+              />
+            </div>
+          )}
+          columns={(containerWidth) => {
+            if (containerWidth < 640) return 1;
+            if (containerWidth < 1024) return 2;
+            return 3;
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default Gallery;
