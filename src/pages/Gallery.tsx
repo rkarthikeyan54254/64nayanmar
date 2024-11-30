@@ -5,7 +5,7 @@ import ImageCard from '../components/ImageCard';
 // This is sample data - replace with actual images from your collection
 const photos = [
   {
-    src: "https://images.unsplash.com/photo-1609607847926-da4702f01fef",
+    src: "https://jqlvlnayjkdyyojxdajn.supabase.co/storage/v1/object/public/images/mama11.jpg",
     width: 1600,
     height: 900,
     alt: "Temple ceremony",
@@ -13,7 +13,7 @@ const photos = [
     description: "பிரதோஷ சிவநாயன்மார் அருளாசி வழங்குகிறார்"
   },
   {
-    src: "https://images.unsplash.com/photo-1604873902969-999bffa6c762",
+    src: "https://jqlvlnayjkdyyojxdajn.supabase.co/storage/v1/object/public/images/mama14.jpg",
     width: 1600,
     height: 1067,
     alt: "Temple visit",
@@ -21,19 +21,61 @@ const photos = [
     description: "காஞ்சி காமகோடி பீடம்"
   },
   {
-    src: "https://images.unsplash.com/photo-1623656607289-720b258149ca",
+    src: "https://jqlvlnayjkdyyojxdajn.supabase.co/storage/v1/object/public/images/mama15a.jpg",
+    width: 1600,
+    height: 1067,
+    alt: "Prayer ceremony",
+    date: "2023-10-20",
+    description: "பூஜை நிகழ்ச்சி"
+  },
+  {
+    src: "https://jqlvlnayjkdyyojxdajn.supabase.co/storage/v1/object/public/images/mama2.jpg",
+    width: 1600,
+    height: 1067,
+    alt: "Prayer ceremony",
+    date: "2023-10-20",
+    description: "பூஜை நிகழ்ச்சி"
+  },
+  {
+    src: "https://jqlvlnayjkdyyojxdajn.supabase.co/storage/v1/object/public/images/Paati+Pradhosha%20Periyava.jpg",
+    width: 1600,
+    height: 1067,
+    alt: "Prayer ceremony",
+    date: "2023-10-20",
+    description: "பூஜை நிகழ்ச்சி"
+  },
+  {
+    src: "https://jqlvlnayjkdyyojxdajn.supabase.co/storage/v1/object/public/images/Periyava+Pradhosha%20Periyava.jpg",
+    width: 1600,
+    height: 1067,
+    alt: "Prayer ceremony",
+    date: "2023-10-20",
+    description: "பூஜை நிகழ்ச்சி"
+  },
+  {
+    src: "https://jqlvlnayjkdyyojxdajn.supabase.co/storage/v1/object/public/images/Pradosha%20Mama-Mami.jpeg",
+    width: 1600,
+    height: 1067,
+    alt: "Prayer ceremony",
+    date: "2023-10-20",
+    description: "பூஜை நிகழ்ச்சி"
+  },
+  {
+    src: "https://jqlvlnayjkdyyojxdajn.supabase.co/storage/v1/object/public/images/Pradhosha%20Periyava1.jpg",
     width: 1600,
     height: 1067,
     alt: "Prayer ceremony",
     date: "2023-10-20",
     description: "பூஜை நிகழ்ச்சி"
   }
+
+
 ];
 
 function Gallery() {
   const [selectedYear, setSelectedYear] = useState<string>('all');
-  const years = ['all', '2023', '2022', '2021'];
-
+  // const years = ['all', '2023', '2022', '2021'];
+  const years = ['all'];
   const filteredPhotos = selectedYear === 'all' 
     ? photos 
     : photos.filter(photo => photo.date?.startsWith(selectedYear));

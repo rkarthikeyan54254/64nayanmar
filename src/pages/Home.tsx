@@ -11,7 +11,7 @@ function Home() {
       {/* Hero Section */}
       <section className="relative h-[70vh] rounded-xl overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1609607847926-da4702f01fef?auto=format&fit=crop&q=80&w=2000"
+          src="https://jqlvlnayjkdyyojxdajn.supabase.co/storage/v1/object/public/images/ANNA.jpg"
           alt="Spiritual Background"
           className="w-full h-full object-cover"
         />
